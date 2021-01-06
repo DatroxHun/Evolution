@@ -6,14 +6,14 @@ namespace Z0mziMath
     {
 
     }
-    class Vector2
+    public class Vector2
     {
-        Vector2(int _x,int _y)
+        public Vector2(int _x, int _y)
         {
             x = _x;
             y = _y;
         }
-        int x;
-        int y;
+        public int x;
+        public int y;
     }
 }

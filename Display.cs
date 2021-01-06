@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.InteropServices;
+using Z0mziMath;
 
 namespace Evolution
 {
@@ -16,10 +17,12 @@ namespace Evolution
         private static DirectBitmap canvas = new DirectBitmap(Form1.instance.display.Width, Form1.instance.display.Height);
 
         private static int step;
+        private static int tileWidth;
 
         public static void Initialize(int _tileWidth)
         {
             step = (int)((double)Form1.instance.display.Width / (double)_tileWidth);
+            tileWidth = _tileWidth;
 
             for (int x = 0; x < background.Width; x++)
             {
@@ -44,13 +47,18 @@ namespace Evolution
         {
             canvas.Bitmap = background.Bitmap.Clone(new Rectangle(0, 0, background.Width, background.Height), PixelFormat.Format32bppArgb);
 
-            for (int x = 0; x < _img.Width; x++)
+            for (int x = 0; x < step; x++)
             {
-                for (int y = 0; y < _img.Height; y++)
+                for (int y = 0; y < step; y++)
                 {
-                    canvas.SetPixel(_x + x, _y + y, );
+                    Vector2 v = new Vector2(_x + x, _y + y);
+                    canvas.SetPixel(v.x, v.y, _img.GetPixel((int)Math.Floor(_img.Width * (float)x / (float)step), (int)Math.Floor(_img.Width * (float)y / (float)step)));
                 }
             }
+
+            Form1.instance.Show(step.ToString());
+
+            Refresh();
         }
 
         public static void Refresh()

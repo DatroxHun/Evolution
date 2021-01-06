@@ -18,9 +18,18 @@ namespace Evolution
             InitializeComponent();
         }
 
+        public void Show(string _input)
+        {
+            MessageBox.Show(_input);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Display.Initialize(25);
+            DirectBitmap db = new DirectBitmap(64, 64);
+            db.Bitmap = new Bitmap("a.png");
+
+            Display.DrawObject(0, 0, db);
         }
     }
 }
