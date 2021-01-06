@@ -12,26 +12,57 @@ namespace Evolution
 {
     public static class Display
     {
-        private static DirectBitmap bmp = new DirectBitmap(600, 600);
+        private static DirectBitmap background = new DirectBitmap(Form1.instance.display.Width, Form1.instance.display.Height);
+        private static DirectBitmap canvas = new DirectBitmap(Form1.instance.display.Width, Form1.instance.display.Height);
 
-        public static void Initialize()
+        private static int step;
+
+        public static void Initialize(int _tileWidth)
         {
-            for (int x = 0; x < bmp.Width; x++)
+            step = (int)((double)Form1.instance.display.Width / (double)_tileWidth);
+
+            for (int x = 0; x < background.Width; x++)
             {
-                for (int y = 0; y < bmp.Height; y++)
+                for (int y = 0; y < background.Height; y++)
                 {
-                    bmp.SetPixel(x, y, Color.Black);
+                    if (x % step == 0 || y % step == 0)
+                    {
+                        background.SetPixel(x, y, Color.White);
+                    }
+                    else
+                    {
+                        background.SetPixel(x, y, Color.Black);
+                    }
                 }
             }
 
-            Form1.instance.display.Image = bmp.Bitmap;
+            canvas.Bitmap = background.Bitmap.Clone(new Rectangle(0, 0, background.Width, background.Height), PixelFormat.Format32bppArgb);
+            Refresh();
+        }
+
+        public static void DrawObject(int _x, int _y, DirectBitmap _img)
+        {
+            canvas.Bitmap = background.Bitmap.Clone(new Rectangle(0, 0, background.Width, background.Height), PixelFormat.Format32bppArgb);
+
+            for (int x = 0; x < _img.Width; x++)
+            {
+                for (int y = 0; y < _img.Height; y++)
+                {
+                    canvas.SetPixel(_x + x, _y + y, );
+                }
+            }
+        }
+
+        public static void Refresh()
+        {
+            Form1.instance.display.Image = canvas.Bitmap;
             Form1.instance.display.Refresh();
         }
     }
 
     public class DirectBitmap : IDisposable
     {
-        public Bitmap Bitmap { get; private set; }
+        public Bitmap Bitmap { get; set; }
         public Int32[] Bits { get; private set; }
         public bool Disposed { get; private set; }
         public int Height { get; private set; }

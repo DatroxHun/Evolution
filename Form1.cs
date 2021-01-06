@@ -14,12 +14,13 @@ namespace Evolution
     {
         public Form1()
         {
+            Initialize();
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Display.Initialize();
+            Display.Initialize(25);
         }
     }
 }

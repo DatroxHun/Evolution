@@ -41,7 +41,7 @@ namespace Evolution
             // 
             this.display.Location = new System.Drawing.Point(12, 12);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(600, 600);
+            this.display.Size = new System.Drawing.Size(800, 800);
             this.display.TabIndex = 0;
             this.display.TabStop = false;
             // 
@@ -50,7 +50,7 @@ namespace Evolution
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(861, 623);
+            this.ClientSize = new System.Drawing.Size(1008, 824);
             this.Controls.Add(this.display);
             this.Name = "Form1";
             this.ShowIcon = false;
@@ -63,6 +63,11 @@ namespace Evolution
         }
 
         #endregion
+
+        private void Initialize()
+        {
+            instance = this;
+        }
 
         public System.Windows.Forms.PictureBox display;
     }
