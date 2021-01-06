@@ -9,5 +9,18 @@ namespace Evolution
     class Evolution
     {
 
+        public void Run(int rounds)
+        {
+
+        }
+
+        List<Plant> Plants = new List<Plant>();
+        private void runOneRound()
+        {
+            foreach (var item in Plants)
+            {
+                item.calcOneRound();
+            }
+        }
     }
 }
