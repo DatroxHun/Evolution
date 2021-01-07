@@ -35,12 +35,12 @@ namespace Evolution
         {
             Random rnd = new Random();
 
-            int lifeSpan = rnd.Next();
-            int height = rnd.Next();
-            int root = rnd.Next();
-            double dilemma = rnd.Next();
-            int numOfSeeds = rnd.Next();
-            int resourcesTransferred = rnd.Next();
+            int lifeSpan = rnd.Next(25, 50);
+            int height = rnd.Next(1, 10);
+            int root = rnd.Next(1, 4);
+            double dilemma = rnd.NextDouble();
+            int numOfSeeds = rnd.Next(1, 4);
+            int resourcesTransferred = rnd.Next(50, 100);
 
             Dictionary<string, double> dominanceChance = new Dictionary<string, double>();
 

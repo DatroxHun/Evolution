@@ -50,12 +50,12 @@ namespace Evolution
                     Vector2 enrgyPos = new Vector2(Pos.x + x, Pos.y + y);
                     if (inMap(enrgyPos))
                     {
-                        energyOnTiles.Add(enegryOnTile(enrgyPos,Height));
+                        energyOnTiles.Add(enegryOnTile(enrgyPos, Height));
                     }
                 }
             }
         }
-        private float enegryOnTile(Vector2 Pos,int onHight)
+        private float enegryOnTile(Vector2 Pos, int onHight)
         {
             //if the tile has a bigger plant then there is zero energy
             if (findPlantByCoord(Pos).Height > onHight)
@@ -69,7 +69,7 @@ namespace Evolution
                 for (int Ey = -1; Ey <= 1; Ey++)
                 {
                     //check if higher and if that exists.
-                    if (findPlantByCoord(new Vector2(Ex,Ey)+Pos).Height>onHight && )
+                    if (findPlantByCoord(new Vector2(Ex, Ey) + Pos).Height > onHight)
                     {
                         nOfBigger++;
                     }
