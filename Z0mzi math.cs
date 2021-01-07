@@ -15,5 +15,9 @@ namespace Z0mziMath
         }
         public int x;
         public int y;
+        public static Vector2 operator +(Vector2 one, Vector2 two)
+        {
+            return new Vector2(one.x + two.x, one.y + two.y);
+        }
     }
 }

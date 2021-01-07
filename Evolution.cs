@@ -9,13 +9,13 @@ namespace Evolution
     class Evolution
     {
 
-        public void Run(int rounds)
+        public static void Run(int rounds)
         {
-
+            runOneRound();
         }
 
-        List<Plant> Plants = new List<Plant>();
-        private void runOneRound()
+        public static List<Plant> Plants = new List<Plant>();
+        private static void runOneRound()
         {
             foreach (var item in Plants)
             {
