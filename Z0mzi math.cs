@@ -4,7 +4,7 @@ namespace Z0mziMath
 {
     public class Mathf
     {
-
+        
     }
     public class Vector2
     {
