@@ -2,9 +2,22 @@
 
 namespace Z0mziMath
 {
-    public class Mathf
+    public static class Mathf
     {
+        public static double Map(double input, double inMin, double inMax, double outMin, double outMax)
+        {
+            return (input - inMin) / (inMax - inMin) * (outMax - outMin) + outMin;
+        }
 
+        public static int Clamp(int input, int min, int max)
+        {
+            return Math.Min(max, Math.Max(min, input));
+        }
+
+        public static double Clamp(double input, double min, double max)
+        {
+            return Math.Min(max, Math.Max(min, input));
+        }
     }
     public class Vector2
     {
@@ -24,5 +37,9 @@ namespace Z0mziMath
         {
             return string.Format($"{x}, {y}");
         }
+
+
+
+
     }
 }

@@ -51,12 +51,14 @@ namespace Evolution
             {
                 for (int y = 0; y < step - 1; y++)
                 {
-                    Vector2 v = new Vector2(_x + 1 + x, _y + 1 + y);
+                    Vector2 v = new Vector2(_x * step + 1 + x, _y * step + 1 + y);
                     Color currColor = _img.Bitmap.GetPixel((int)Math.Floor(_img.Width * (float)x / (float)step), (int)Math.Floor(_img.Height * (float)y / (float)step));
                     if (currColor.A != 0)
                     {
                         canvas.Bitmap.SetPixel(v.x, v.y, currColor);
                     }
+
+                    //Form1.instance.Show(((int)Math.Floor(_img.Height * (float)y / (float)step)).ToString());
                 }
             }
 
@@ -80,13 +82,25 @@ namespace Evolution
 
         protected GCHandle BitsHandle { get; private set; }
 
-        public DirectBitmap(int width, int height, Bitmap bmp = null)
+        public DirectBitmap(int width, int height)
         {
             Width = width;
             Height = height;
             Bits = new Int32[width * height];
             BitsHandle = GCHandle.Alloc(Bits, GCHandleType.Pinned);
             Bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppPArgb, BitsHandle.AddrOfPinnedObject());
+        }
+
+        public DirectBitmap(Bitmap bmp)
+        {
+            Width = bmp.Width;
+            Height = bmp.Height;
+
+            Bits = new Int32[Width * Height];
+            BitsHandle = GCHandle.Alloc(Bits, GCHandleType.Pinned);
+            Bitmap = new Bitmap(Width, Height, Width * 4, PixelFormat.Format32bppPArgb, BitsHandle.AddrOfPinnedObject());
+
+            Bitmap = bmp;
         }
 
         public void SetPixel(int x, int y, Color colour)

@@ -48,32 +48,7 @@ namespace Evolution
             }
         }
     }
-    class Genes
-    {
 
-        public static Genes generateRandom()
-        {
-            Random random = new Random();
-
-            float height = random.Next(100) / 100;
-            float gy0kerek = random.Next(100) / 100;
-            Reproduce reproduce = Reproduce.generateRandom();
-
-            return new Genes(height, gy0kerek, reproduce);
-        }
-
-
-        public float height;
-        public float gy0kerek;
-        public Reproduce reproduce;
-
-        public Genes(float height, float gy0kerek, Reproduce reproduce)
-        {
-            this.height = height;
-            this.gy0kerek = gy0kerek;
-            this.reproduce = reproduce;
-        }
-    }
     class Reproduce
     {
         public static Reproduce generateRandom()

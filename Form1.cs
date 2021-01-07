@@ -26,8 +26,8 @@ namespace Evolution
         private void Form1_Load(object sender, EventArgs e)
         {
             Display.Initialize(25);
-            DirectBitmap db = new DirectBitmap(64, 64);
-            db.Bitmap = new Bitmap("a.png");
+
+            DirectBitmap db = new DirectBitmap(new Bitmap("b.png"));
 
             Display.DrawObject(0, 0, db);
         }
