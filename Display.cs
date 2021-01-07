@@ -47,16 +47,18 @@ namespace Evolution
         {
             canvas.Bitmap = background.Bitmap.Clone(new Rectangle(0, 0, background.Width, background.Height), PixelFormat.Format32bppArgb);
 
-            for (int x = 0; x < step; x++)
+            for (int x = 0; x < step - 1; x++)
             {
-                for (int y = 0; y < step; y++)
+                for (int y = 0; y < step - 1; y++)
                 {
-                    Vector2 v = new Vector2(_x + x, _y + y);
-                    canvas.SetPixel(v.x, v.y, _img.GetPixel((int)Math.Floor(_img.Width * (float)x / (float)step), (int)Math.Floor(_img.Width * (float)y / (float)step)));
+                    Vector2 v = new Vector2(_x + 1 + x, _y + 1 + y);
+                    Color currColor = _img.Bitmap.GetPixel((int)Math.Floor(_img.Width * (float)x / (float)step), (int)Math.Floor(_img.Height * (float)y / (float)step));
+                    if (currColor.A != 0)
+                    {
+                        canvas.Bitmap.SetPixel(v.x, v.y, currColor);
+                    }
                 }
             }
-
-            Form1.instance.Show(step.ToString());
 
             Refresh();
         }
@@ -78,7 +80,7 @@ namespace Evolution
 
         protected GCHandle BitsHandle { get; private set; }
 
-        public DirectBitmap(int width, int height)
+        public DirectBitmap(int width, int height, Bitmap bmp = null)
         {
             Width = width;
             Height = height;

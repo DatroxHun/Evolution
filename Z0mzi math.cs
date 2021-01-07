@@ -19,5 +19,10 @@ namespace Z0mziMath
         {
             return new Vector2(one.x + two.x, one.y + two.y);
         }
+
+        public override string ToString()
+        {
+            return string.Format($"{x}, {y}");
+        }
     }
 }
